@@ -25,6 +25,7 @@ Console.WriteLine("(C)Copyright 1865. All rights reserved.");
 
 void HandleBuild()
 {
+    Console.WriteLine(" ");
     Console.WriteLine("Available buildings:");
     Console.WriteLine(" 1. Greenhouse (Cost: " + GREENHOUSE_ENERGY_COST + " energy).");
     Console.WriteLine(" 2. Water Extractor (Cost: " + WATER_EXTRACTORS_COST + " energy).");
@@ -248,8 +249,7 @@ while (colonists > 0)
     {
         HandleSkip();
     }
-
-
+    
     else
     {
         Console.WriteLine("Command not found. Please use the listed commands ( build / gather / skip )");
