@@ -14,7 +14,7 @@ const int FRIENDLY_ALIEN_FOOD_AMOUNT = 20, FRIENDLY_ALIEN_WATER_AMOUNT = 20;
 Random rand = new Random();
 
 Console.WriteLine("Welcome to Space Colony Manager Simulator: Version Ultra Delux 9000");
-Console.WriteLine("(C)Copyright 1865. All rights reserved.");
+Console.WriteLine("©Copyright 1865. All rights reserved. Not really. maybe...");
 
 
 
