@@ -3,4 +3,4 @@ I am great. Elon hit me up.
 
 <br><br><br>
 
-©Copyright: No copyright I do not care. Also screw you.
+<small>©Copyright: No copyright I do not care. Also screw you.</small>
