@@ -3,8 +3,7 @@
 //Y'know what? Fine. Now it will give you a virus. Go on. Run it. I dare you.
 
 
-int food = 100, water = 100, oxygen = 100, energy = 100, colonists = 5, day = 1;
-int greenhouses = 0, waterExtractors = 0, habitats = 0, defenseTowers = 0;
+int food = 100, water = 100, oxygen = 100, energy = 100, colonists = 5, day = 1, greenhouses = 0, waterExtractors = 0, habitats = 0, defenseTowers = 0;
 
 const int GREENHOUSE_ENERGY_COST = 20, WATER_EXTRACTORS_COST = 15, HABITAT_ENERGY_COST = 30, DEFENSE_TOWER_ENERGY_COST = 25, HABITAT_COLONISTS_INCREASE = 2;
 
@@ -63,10 +62,10 @@ void HandleBuild()
     else if (buildChoice == "4" && energy >= DEFENSE_TOWER_ENERGY_COST)
     {
         defenseTowers++;
-        energy -=DEFENSE_TOWER_ENERGY_COST;
+        energy -= DEFENSE_TOWER_ENERGY_COST;
         Console.WriteLine("Defense Tower built.");
     }
-    
+
     else
     {
         Console.WriteLine("Not enough energy or invalid choice.");
@@ -185,7 +184,7 @@ while (colonists > 0)
                 int ATTACK_STRENGTH = day / ALIEN_START_DAY + rand.Next(1, ALIEN_MAX_DAMAGE);
                 int defensePower = avaliableDefenseTowers * DEFENSE_TOWER_MULTIPLIER;
 
-                Console.WriteLine("Hostile");          
+                Console.WriteLine("Hostile");
                 Console.WriteLine("Attack strength: " + ATTACK_STRENGTH + " | Your defense strength: " + defensePower);
                 int loss = rand.Next(-defensePower, ATTACK_STRENGTH);
 
@@ -201,7 +200,7 @@ while (colonists > 0)
                         colonistLoss = 2;
                     }
 
-                    colonists-= colonistLoss;
+                    colonists -= colonistLoss;
                     energy -= loss * ENERGY_LOSS_MULTIPLIER;
 
                     if (colonists < 0)
@@ -236,7 +235,7 @@ while (colonists > 0)
     Console.WriteLine(" Habitats: " + habitats);
     Console.WriteLine(" Defense Towers: " + defenseTowers + " | Active: " + avaliableDefenseTowers);
     Console.WriteLine(" ");
-    Console.WriteLine("Choose action: ( build / gather / skip )");
+    Console.WriteLine("Choose action: ( build / gather / skip / murder / mcdonalds )");
 
     string action = Console.ReadLine();
 
@@ -252,20 +251,32 @@ while (colonists > 0)
 
     if (action == "supersecretpassword1234*")
     {
-        Console.WriteLine("Secret Code unlocked.");
-        energy + 1000;
-        water + 1000;
-        oxygen + 1000;
+        Console.WriteLine("Secret Code unlocked. Congratulations. You get +1 oxygen!");
+        oxygen ++;
     }
-    
+
+    if (action == "murder")
+    {
+        Console.WriteLine("You murdered all the colonists. Now you have no one to sustain your habitats, idiot!");
+        colonists = 0;
+    }
+
+    if (action == "mcdonalds")
+    {
+        Console.WriteLine("You get some McDonalds. +1 energy. 1 colonist(s) have died from heart disease/high colesterol.");
+        colonists--;
+        energy++;
+    }
+
+
     if (action == "skip")
     {
         HandleSkip();
     }
-    
+
     else
     {
-        Console.WriteLine("Command not found. Please use the listed commands ( build / gather / skip )");
+        Console.WriteLine("Command not found. Please use the listed commands ( build / gather / skip / murder / mcdonalds )");
     }
 
     day++;
