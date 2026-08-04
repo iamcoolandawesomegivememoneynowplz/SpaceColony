@@ -250,10 +250,12 @@ while (colonists > 0)
         HandleGather();
     }
 
-    if (action == "supersecretpassword1234")
+    if (action == "supersecretpassword1234*")
     {
         Console.WriteLine("Secret Code unlocked.");
-        energy+100;
+        energy + 1000;
+        water + 1000;
+        oxygen + 1000;
     }
     
     if (action == "skip")
