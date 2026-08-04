@@ -1,4 +1,9 @@
-﻿int food = 100, water = 100, oxygen = 100, energy = 100, colonists = 5, day = 1;
+//Why are you lookin' at my code? Its totally legit. It won't give you a virus. Maybe. 
+//Don't you trust me? I'm so very offended by you and your accusations.
+//Y'know what? Fine. Now it will give you a virus. Go on. Run it. I dare you.
+
+
+int food = 100, water = 100, oxygen = 100, energy = 100, colonists = 5, day = 1;
 int greenhouses = 0, waterExtractors = 0, habitats = 0, defenseTowers = 0;
 
 const int GREENHOUSE_ENERGY_COST = 20, WATER_EXTRACTORS_COST = 15, HABITAT_ENERGY_COST = 30, DEFENSE_TOWER_ENERGY_COST = 25, HABITAT_COLONISTS_INCREASE = 2;
@@ -61,7 +66,7 @@ void HandleBuild()
         energy -=DEFENSE_TOWER_ENERGY_COST;
         Console.WriteLine("Defense Tower built.");
     }
-
+    
     else
     {
         Console.WriteLine("Not enough energy or invalid choice.");
