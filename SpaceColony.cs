@@ -66,6 +66,11 @@ void HandleBuild()
         Console.WriteLine("Defense Tower built.");
     }
 
+    else if (buildChoice == "5")
+    {
+        Console.WriteLine("5 isn't an option, stupid.");
+    }
+
     else
     {
         Console.WriteLine("Not enough energy or invalid choice.");
@@ -251,8 +256,8 @@ while (colonists > 0)
 
     if (action == "supersecretpassword1234*")
     {
-        Console.WriteLine("Secret Code unlocked. Congratulations. You get +1 oxygen!");
-        oxygen ++;
+        Console.WriteLine("Secret Code unlocked. Congratulations. You get +30 oxygen!");
+        oxygen + HABITAT_ENERGY_COST;
     }
 
     if (action == "murder")
@@ -263,11 +268,11 @@ while (colonists > 0)
 
     if (action == "mcdonalds")
     {
-        Console.WriteLine("You get some McDonalds. +1 energy. 1 colonist(s) have died from heart disease/high colesterol.");
+        Console.WriteLine("You get some McDonalds. +30 energy. 1 colonist(s) have died from heart disease/high colesterol.");
         colonists--;
-        energy++;
+        energy + HABITAT_ENERGY_COST;
     }
-
+    
 
     if (action == "skip")
     {
