@@ -3,7 +3,7 @@
 //Y'know what? Fine. Now it will give you a virus. Go on. Run it. I dare you.
 
 
-int food = 100, water = 100, oxygen = 100, energy = 100, colonists = 5, day = 1, greenhouses = 0, waterExtractors = 0, habitats = 0, defenseTowers = 0;
+int food = 100, water = 100, oxygen = 100, energy = 100, colonists = 5, day = 1, greenhouses = 0, waterExtractors = 0, habitats = 0, defenseTowers = 0; nukeLaunched = 0;
 
 const int GREENHOUSE_ENERGY_COST = 20, WATER_EXTRACTORS_COST = 15, HABITAT_ENERGY_COST = 30, DEFENSE_TOWER_ENERGY_COST = 25, HABITAT_COLONISTS_INCREASE = 2;
 
@@ -35,6 +35,7 @@ void HandleBuild()
     Console.WriteLine(" 2. Water Extractor (Cost: " + WATER_EXTRACTORS_COST + " energy).");
     Console.WriteLine(" 3. Habitat (Cost: " + HABITAT_ENERGY_COST + " energy).");
     Console.WriteLine(" 4. Defense Tower (Cost: " + DEFENSE_TOWER_ENERGY_COST + " energy).");
+    Console.WriteLine(" 5. Nuclear Bomb (Cost: " + DEFENSE_TOWER_ENERGY_COST + " energy).");
 
     string buildChoice = Console.ReadLine();
 
@@ -66,7 +67,17 @@ void HandleBuild()
         Console.WriteLine("Defense Tower built.");
     }
 
-    else if (buildChoice == "5")
+    else if (buildChoice == "5" && energy >=  DEFENSE_TOWER_ENERGY_COST)
+    {
+        Console.WriteLine("You construct a nuclear weapons. The nuclear bomb tests have scared the aliens away for 2 days. ");
+        Console.WriteLine("-30 energy. 1 colonist(s) have died during testing.");
+        colonists--;
+        nukeLaunched = 2
+        energy - DEFENSE_TOWER_ENERGY_COST;
+    }
+        
+
+    else if (buildChoice == "6")
     {
         Console.WriteLine("5 isn't an option, stupid.");
     }
@@ -164,7 +175,7 @@ while (colonists > 0)
         Console.WriteLine("A colonist has died due to shortages of supplies.");
     }
 
-    if (day >= ALIEN_START_DAY)
+    if (day >= ALIEN_START_DAY || nukeLaunched <= 0)
     {
         int chance = rand.Next(1, 5);
         if (chance == 1)
@@ -268,11 +279,10 @@ while (colonists > 0)
 
     if (action == "mcdonalds")
     {
-        Console.WriteLine("You get some McDonalds. +30 energy. 1 colonist(s) have died from heart disease/high colesterol.");
+        Console.WriteLine("You get some McDonalds. +30 (McDonalds-fueled energy). 1 colonist(s) have died from heart disease/high colesterol.");
         colonists--;
         energy + HABITAT_ENERGY_COST;
     }
-    
 
     if (action == "skip")
     {
@@ -285,6 +295,7 @@ while (colonists > 0)
     }
 
     day++;
+    nukeLaunched --;
 }
 
 Console.WriteLine("All colonists have perished. Game over.");
