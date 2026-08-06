@@ -4,7 +4,7 @@
 
 
 int food = 100, water = 100, oxygen = 100, energy = 100, colonists = 5, day = 1, greenhouses = 0, waterExtractors = 0, habitats = 0, defenseTowers = 0; 
-int nukeLaunched = 0;
+int nukeLaunched = -1;
 
 const int GREENHOUSE_ENERGY_COST = 20, WATER_EXTRACTORS_COST = 15, HABITAT_ENERGY_COST = 30, DEFENSE_TOWER_ENERGY_COST = 25, HABITAT_COLONISTS_INCREASE = 2;
 
@@ -37,6 +37,8 @@ void HandleBuild()
     Console.WriteLine(" 3. Habitat (Cost: " + HABITAT_ENERGY_COST + " energy).");
     Console.WriteLine(" 4. Defense Tower (Cost: " + DEFENSE_TOWER_ENERGY_COST + " energy).");
     Console.WriteLine(" 5. Nuclear Bomb (Cost: " + DEFENSE_TOWER_ENERGY_COST + " energy).");
+    Console.WriteLine(" ");
+
 
     string buildChoice = Console.ReadLine();
 
@@ -70,17 +72,16 @@ void HandleBuild()
 
     else if (buildChoice == "5" && energy >= DEFENSE_TOWER_ENERGY_COST)
     {
-        Console.WriteLine("You construct a nuclear weapons. The nuclear bomb tests have scared the aliens away for 2 days. ");
+        Console.WriteLine("You construct a nuclear bomb. The nuclear bomb tests conducted with the bomb have scared the aliens away for 2 days. ");
         Console.WriteLine("-30 energy. 1 colonist(s) have died during testing.");
         colonists--;
         nukeLaunched = 2;
         energy -= DEFENSE_TOWER_ENERGY_COST;
     }
 
-
     else if (buildChoice == "6")
     {
-        Console.WriteLine("5 isn't an option, stupid.");
+        Console.WriteLine("6 isn't an option, stupid.");
     }
 
     else
@@ -253,6 +254,7 @@ while (colonists > 0)
     Console.WriteLine(" Defense Towers: " + defenseTowers + " | Active: " + avaliableDefenseTowers);
     Console.WriteLine(" ");
     Console.WriteLine("Choose action: ( build / gather / skip / murder / mcdonalds )");
+    Console.WriteLine(" ");
 
     string action = Console.ReadLine();
 
